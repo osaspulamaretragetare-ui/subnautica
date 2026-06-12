@@ -1222,10 +1222,7 @@ function loadQuestion() {
   document.getElementById('quiz-next').style.display = 'none';
   document.getElementById('quiz-fb').className = 'quiz-feedback';
   document.getElementById('quiz-fb').textContent = '';
-  const q = JSON.parse(JSON.stringify(questions[current]));
-  const correctAnswer = q.opts[q.ans];
-shuffle(q.opts);
-q.ans = q.opts.indexOf(correctAnswer);
+  const q = questions[current];
   document.getElementById('quiz-q').textContent = q.q;
   document.getElementById('quiz-score-lbl').textContent = `Scor: ${score}/${questions.length}`;
   const optsEl = document.getElementById('quiz-opts');
@@ -1285,9 +1282,6 @@ function restartQuiz() {
   document.getElementById('quiz-result').className = 'quiz-result';
   loadQuestion();
 }
-
-shuffle(questions);
-loadQuestion();
 
 loadQuestion();
 
